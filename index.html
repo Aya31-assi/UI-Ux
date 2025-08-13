@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AE Company</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .bg-pattern {
+            background-color: #0E1F16;background-image:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255, 255, 255, 0.05) 25%, #111827 25%);
+            background-position: 10px 0, 10px 0, 0 0, 0 0;
+            background-size: 20px 20px;
+            background-repeat: repeat;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInLeft {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+         @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInRight {
+            animation: slideInRight 1s ease-out forwards;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .timeline-item.md\:flex-row-reverse {
+             transform: translateX(100px);
+        }
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00a322', // Green from logo #00a322 #FFC107 #22c55e
+                        'primary-dark': '#16a34a',
+                        secondary: '#ffffff',
+                        dark: '#000000',
+                        'dark-accent': '#111827'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-secondary">
+<header class="bg-dark sticky top-0 z-50 shadow-md">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="flex items-center space-x-2" href="#">
+<img alt="AE company logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Yvdc4cm9qehThtbnejrGUu-j_25FN4y5484dtz6QYYLJ4mT2_qugfJiQpG9428QiIpu-KquzoRiYJB9lJejeGaArRvgd94TnumhGzhDdRnpt5dysvTPBT11xjVK5ArOcdbf6kXbY9pK7rFVXfAyJS_3M9En83J4Ajyr9GBw17OQFQIDA4A1yP9RgHBfGvmpU12YwWqB_946Vu-SvN8qQgPJ8zmza8JRUb__5F5TSoQYMTp5wPg9_JRlueuHeTh7-8B_jgqFDZlI"/>
+</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="hover:text-primary transition duration-300" href="#about">About Us</a>
+<a class="hover:text-primary transition duration-300" href="#portfolio">Portfolio</a>
+<a class="hover:text-primary transition duration-300" href="#university">University Hub</a>
+<a class="hover:text-primary transition duration-300" href="#story">Our Story</a>
+<a class="bg-primary text-dark px-4 py-2 rounded-full hover:bg-primary-dark transition duration-300" href="#contact">Contact Us</a>
+</div>
+<div class="md:hidden">
+<button class="text-secondary focus:outline-none" id="menu-btn">
+<span class="material-icons">menu</span>
+</button>
+</div>
+</nav>
+<div class="hidden md:hidden" id="mobile-menu">
+<a class="block py-2 px-4 text-sm hover:bg-dark-accent" href="#about">About Us</a>
+<a class="block py-2 px-4 text-sm hover:bg-dark-accent" href="#portfolio">Portfolio</a>
+<a class="block py-2 px-4 text-sm hover:bg-dark-accent" href="#university">University Hub</a>
+<a class="block py-2 px-4 text-sm hover:bg-dark-accent" href="#story">Our Story</a>
+<a class="block py-2 px-4 text-sm hover:bg-dark-accent" href="#contact">Contact Us</a>
+</div>
+</header>
+<main>
+<section class="bg-pattern min-h-screen flex items-center justify-center text-center overflow-hidden" id="home">
+<div class="container mx-auto px-6">
+<h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn" style="animation-delay: 0.4s;">Innovative Solutions, <span class="text-primary">Expertly Crafted.</span></h1>
+<p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fadeIn" style="animation-delay: 0.8s;">We are a passionate team dedicated to building outstanding digital experiences. From concept to launch, we bring your vision to life.</p>
+<a class="bg-primary text-dark font-bold py-3 px-8 rounded-full hover:bg-primary-dark transition duration-300 text-lg animate-fadeIn hover:scale-110 transform" href="#portfolio" style="animation-delay: 1.2s;">See Our Work</a>
+</div>
+</section>
+<section class="py-20 bg-dark-accent fade-in-section" id="about" >
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold">Meet the Team</h2>
+<p class="text-lg text-gray-400 mt-2">The minds behind the magic.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-dark p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
+<div class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary flex items-center justify-center bg-gray-700">
+<i class="fas fa-user text-6xl text-white"></i>
+</div>
+<h3 class="text-xl font-bold">Aya Assi</h3>
+<p class="text-primary mb-2">Lead Developer</p>
+<p class="text-gray-400 text-sm mb-4 h-24">Aya is a passionate developer with a knack for turning complex problems into elegant solutions. She thrives on building robust and scalable applications.</p>
+<div class="flex space-x-4 mt-auto">
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="far fa-envelope"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="bg-dark p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
+<div class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary flex items-center justify-center bg-gray-700">
+<i class="fas fa-user text-6xl text-white"></i>
+</div>
+<h3 class="text-xl font-bold">Eman Alghalban</h3>
+<p class="text-primary mb-2">UI/UX Designer</p>
+<p class="text-gray-400 text-sm mb-4 h-24">Eman has a creative spirit and an eye for aesthetics. He specializes in creating intuitive and visually appealing user interfaces that enhance the user experience.</p>
+<div class="flex space-x-4 mt-auto">
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="far fa-envelope"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="bg-dark p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
+<div class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary flex items-center justify-center bg-gray-700">
+<i class="fas fa-user text-6xl text-white"></i>
+</div>
+<h3 class="text-xl font-bold">Aseel Qadah</h3>
+<p class="text-primary mb-2">Project Manager</p>
+<p class="text-gray-400 text-sm mb-4 h-24">Aseel is the organizational powerhouse of the team. He ensures projects run smoothly, stay on schedule, and meet the highest quality standards.</p>
+<div class="flex space-x-4 mt-auto">
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="far fa-envelope"></i></a>
+<a class="text-gray-400 hover:text-primary" href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-dark fade-in-section" id="portfolio">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold">Our Work</h2>
+<p class="text-lg text-gray-400 mt-2">A selection of our proudest achievements.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-dark-accent rounded-lg overflow-hidden shadow-lg group">
+<img alt="Programming Project 1" class="w-full h-56 object-cover group-hover:opacity-75 transition-opacity duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGs4p7Woqo3BIxLFDDzk-ucR34KAoxTfrCTKd7fAxjTVrAw0LFr4a_AhU5c4srmcu3DCjhhHB9WsFIm1VAoGN57n_cpTH0ZHr_dHrKAOqch3g1rrQXm8LfuWx6omTn_cLlamW8oQApH0cjIRSbdG2jaTo0s-X3kKX531bMQcp_d-hNvFh34kggjivs-tn84uy2TY947f0AyJKaJ6oXFN5xzDlH3keOCMCOUiYgyutO56G811DBhlq2_XNHuBy4cMu2J4ydX4JQy_A"/>
+
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+<p class="text-gray-400 mb-4">A robust and scalable e-commerce solution for a growing retail brand.</p>
+<a class="text-primary hover:underline" href="#">View Project <span class="material-icons align-middle text-sm">arrow_forward</span></a>
+</div>
+</div>
+<div class="bg-dark-accent rounded-lg overflow-hidden shadow-lg group">
+<img alt="Academic Project 1" class="w-full h-56 object-cover group-hover:opacity-75 transition-opacity duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwm6eey_jJzSntkiO-TDZn6bgLC6RGhSM2cAWMUN6fjm6lGcFnvtbI69cISzJe3agLLW1bWVOeNSIMAs_3f2sX4ERw4PTpqGS_vY5SDf7Qzg-xTnonsctx2k3uUQyPtNp6E14olzoEPk4Z-gWpqIB1ll9Y6LP03umPub_3KejZkUdrLJZ5CMw5S5ivVFsE_ht02-CET0d2nHZCEPoaMoXTfK4CHg84TNKM4cF_mtOf1u-f41nhjoyNuCcPj9OAAtmId2d83VUJGG8"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Research Data Visualization</h3>
+<p class="text-gray-400 mb-4">An interactive web tool for visualizing complex academic research data.</p>
+<a class="text-primary hover:underline" href="#">View Project <span class="material-icons align-middle text-sm">arrow_forward</span></a>
+</div>
+</div>
+<div class="bg-dark-accent rounded-lg overflow-hidden shadow-lg group">
+<img alt="Programming Project 2" class="w-full h-56 object-cover group-hover:opacity-75 transition-opacity duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5nG7XLc0Ez23HKsP9QgZsJEK53t9ohJiHpNVW3NpGtymw_L9Z1KmusgOzKj_qWeCHrDU5sOTPwV0ssM4iFt6dlveyZiZCvtSbO3zkr8NDcggmeePcZhZ5rk2AkinqPaN_T4hOJ3xDjHtJiPRQk1JdMeikMQAenkpYecrrvms-uNBbe0XQcAqx8II_Bkbzn_zNS3-X5ZqKI2-REJPscrQcqgiaxKrI71ZUxYiKzrDlhHvi_BAlQ2Hcnv8xEA6AoXUVhLzjpoychfA"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Mobile Banking App</h3>
+<p class="text-gray-400 mb-4">A secure and user-friendly mobile application for a local credit union.</p>
+<a class="text-primary hover:underline" href="#">View Project <span class="material-icons align-middle text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-pattern" id="university">
+<div class="container mx-auto px-6 fade-in-section">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold">University Hub</h2>
+<p class="text-lg text-gray-400 mt-2">Supporting students, one resource at a time.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="text-center lg:text-left">
+<h3 class="text-2xl md:text-3xl font-bold mb-4">From Students, For Students</h3>
+<p class="text-lg text-gray-300 mb-8">We believe in giving back to the community where we started. Our university initiatives provide valuable resources to help students succeed in their academic journey, from comprehensive summaries to detailed course explanations.</p>
+<a class="inline-block bg-primary text-dark font-bold py-3 px-8 rounded-full hover:bg-primary-dark transition duration-300" href="#contact">Contribute or Learn More</a>
+</div>
+<div class="grid grid-cols-2 gap-6 md:gap-8">
+<div class="bg-dark/50 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/10 animate-float" style="animation-delay: 0s;">
+<div class="mb-3 text-primary">
+<i class="fas fa-book-open text-4xl"></i>
+</div>
+<h3 class="text-3xl font-bold mb-1">150+</h3>
+<p class="text-gray-300 font-semibold">Summaries Created</p>
+</div>
+<div class="bg-dark/50 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/10 animate-float" style="animation-delay: 0.2s;">
+<div class="mb-3 text-primary">
+<i class="fas fa-star text-4xl"></i>
+</div>
+<h3 class="text-3xl font-bold mb-1">80+</h3>
+<p class="text-gray-300 font-semibold">Course Reviews</p>
+</div>
+<div class="bg-dark/50 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/10 animate-float" style="animation-delay: 0.4s;">
+<div class="mb-3 text-primary">
+<i class="fas fa-chalkboard-teacher text-4xl"></i>
+</div>
+<h3 class="text-3xl font-bold mb-1">200+</h3>
+<p class="text-gray-300 font-semibold">Detailed Explanations</p>
+</div>
+<div class="bg-dark/50 backdrop-blur-sm p-6 rounded-lg text-center shadow-lg transform hover:scale-105 transition-transform duration-300 border border-white/10 animate-float" style="animation-delay: 0.6s;">
+<div class="mb-3 text-primary">
+<i class="fas fa-users text-4xl"></i>
+</div>
+<h3 class="text-3xl font-bold mb-1">1,200+</h3>
+<p class="text-gray-300 font-semibold">Students Helped</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-dark-accent" id="story">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16 fade-in-section">
+<h2 class="text-3xl md:text-4xl font-bold">The Story of Our Beginnings</h2>
+<p class="text-lg text-gray-400 mt-2">From a spark of an idea to a flame of innovation.</p>
+</div>
+<div class="relative">
+<div class="border-l-2 border-primary absolute h-full left-4 md:left-1/2 md:-translate-x-1/2"></div>
+<div class="space-y-12">
+<div class="relative pl-12 md:pl-0 timeline-item">
+<div class="md:flex items-center">
+<div class="md:w-1/2 md:pr-8 md:text-right">
+<div class="absolute -left-0.5 top-0 mt-1.5 md:hidden">
+<div class="bg-primary rounded-full h-5 w-5"></div>
+</div>
+<div class="hidden md:block absolute right-0 -translate-x-1/2 top-1/2 -translate-y-1/2">
+<div class="bg-dark border-2 border-primary rounded-full h-6 w-6"></div>
+</div>
+<div class="bg-dark p-6 rounded-lg shadow-lg hover:shadow-primary/50 transition-shadow duration-300">
+<p class="text-sm text-primary mb-1">Q1 2020</p>
+<h3 class="text-xl font-bold mb-2">The Garage Days</h3>
+<p class="text-gray-400">It all started in a small garage with a shared passion for technology and a dream to make a difference. We were a group of university friends who spent late nights coding, fueled by coffee and a desire to build things that matter.</p>
+</div>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+</div>
+<div class="relative pl-12 md:pl-0 timeline-item md:flex-row-reverse">
+<div class="md:flex flex-row-reverse items-center">
+<div class="md:w-1/2 md:pl-8 md:text-left">
+<div class="absolute -left-0.5 top-0 mt-1.5 md:hidden">
+<div class="bg-primary rounded-full h-5 w-5"></div>
+</div>
+<div class="hidden md:block absolute left-0 translate-x-1/2 top-1/2 -translate-y-1/2">
+<div class="bg-dark border-2 border-primary rounded-full h-6 w-6"></div>
+</div>
+<div class="bg-dark p-6 rounded-lg shadow-lg hover:shadow-primary/50 transition-shadow duration-300">
+<p class="text-sm text-primary mb-1">Q4 2020</p>
+<h3 class="text-xl font-bold mb-2">First Breakthrough</h3>
+<p class="text-gray-400">Our first project, a simple academic tool, gained unexpected traction and showed us the potential of our collaboration. This initial success was the sign we needed to take our passion to the next level.</p>
+</div>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+</div>
+<div class="relative pl-12 md:pl-0 timeline-item">
+<div class="md:flex items-center">
+<div class="md:w-1/2 md:pr-8 md:text-right">
+<div class="absolute -left-0.5 top-0 mt-1.5 md:hidden">
+<div class="bg-primary rounded-full h-5 w-5"></div>
+</div>
+<div class="hidden md:block absolute right-0 -translate-x-1/2 top-1/2 -translate-y-1/2">
+<div class="bg-dark border-2 border-primary rounded-full h-6 w-6"></div>
+</div>
+<div class="bg-dark p-6 rounded-lg shadow-lg hover:shadow-primary/50 transition-shadow duration-300">
+<p class="text-sm text-primary mb-1">Q2 2021</p>
+<h3 class="text-xl font-bold mb-2">Growing the Team</h3>
+<p class="text-gray-400">From those humble beginnings, we've grown into a full-fledged company. We carefully selected each new member, ensuring they shared our core values: innovation, collaboration, and a relentless pursuit of excellence.</p>
+</div>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+</div>
+<div class="relative pl-12 md:pl-0 timeline-item md:flex-row-reverse">
+<div class="md:flex flex-row-reverse items-center">
+<div class="md:w-1/2 md:pl-8 md:text-left">
+<div class="absolute -left-0.5 top-0 mt-1.5 md:hidden">
+<div class="bg-primary rounded-full h-5 w-5"></div>
+</div>
+<div class="hidden md:block absolute left-0 translate-x-1/2 top-1/2 -translate-y-1/2">
+<div class="bg-dark border-2 border-primary rounded-full h-6 w-6"></div>
+</div>
+<div class="bg-dark p-6 rounded-lg shadow-lg hover:shadow-primary/50 transition-shadow duration-300">
+<p class="text-sm text-primary mb-1">Present</p>
+<h3 class="text-xl font-bold mb-2">Our Mission Today</h3>
+<p class="text-gray-400">Every line of code we write is a testament to our journey and our commitment to our clients. We continue to push boundaries and craft digital experiences that not only meet but exceed expectations.</p>
+</div>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-pattern" id="contact">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12 fade-in-section">
+<h2 class="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+<p class="text-lg text-gray-400 mt-2">Have a project in mind? We'd love to hear from you.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 bg-dark p-8 rounded-lg shadow-lg animate-slideInLeft">
+<form action="#" method="POST">
+<div class="mb-4">
+<label class="block text-gray-300 mb-2" for="name">Name</label>
+<input class="w-full px-4 py-2 bg-dark-accent border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="name" name="name" required="" type="text"/>
+</div>
+<div class="mb-4">
+<label class="block text-gray-300 mb-2" for="email">Email</label>
+<input class="w-full px-4 py-2 bg-dark-accent border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="email" name="email" required="" type="email"/>
+</div>
+<div class="mb-6">
+<label class="block text-gray-300 mb-2" for="message">Message</label>
+<textarea class="w-full px-4 py-2 bg-dark-accent border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="message" name="message" required="" rows="5"></textarea>
+</div>
+<div class="text-center">
+<button class="bg-primary text-dark font-bold py-3 px-8 rounded-full hover:bg-primary-dark transition-all duration-300 w-full hover:scale-105" type="submit">Send Message</button>
+</div>
+</form>
+</div>
+<div class="space-y-8 animate-slideInRight" style="animation-delay: 0.2s;">
+<div class="bg-dark p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+<div class="flex items-center mb-4">
+<div class="bg-primary/10 p-3 rounded-full mr-4">
+<i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Our Location</h3>
+<p class="text-gray-400">123 Innovation Drive, Tech City</p>
+</div>
+</div>
+<div class="flex items-center mb-4">
+<div class="bg-primary/10 p-3 rounded-full mr-4">
+<i class="fas fa-phone text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Phone</h3>
+<p class="text-gray-400">+1 (234) 567-890</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="bg-primary/10 p-3 rounded-full mr-4">
+<i class="fas fa-envelope text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Email</h3>
+<p class="text-gray-400">contact@aecompany.com</p>
+</div>
+</div>
+</div>
+<div class="bg-dark p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+<div class="flex items-center mb-4">
+<div class="bg-primary/10 p-3 rounded-full mr-4">
+<i class="fas fa-clock text-primary text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">Working Hours</h3>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-gray-400 py-1 border-b border-gray-700">
+<span>Monday - Friday</span>
+<span class="text-white">9:00 AM - 6:00 PM</span>
+</div>
+<div class="flex justify-between text-gray-400 py-1 border-b border-gray-700">
+<span>Saturday</span>
+<span class="text-white">10:00 AM - 4:00 PM</span>
+</div>
+<div class="flex justify-between text-gray-400 pt-1">
+<span>Sunday</span>
+<span class="text-red-500">Closed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-dark-accent py-8">
+<div class="container mx-auto px-6 text-center text-gray-400">
+<p>© 2024 AE Company. All Rights Reserved.</p>
+</div>
+</footer>
+<script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+        // Scroll animations
+        const scrollElements = document.querySelectorAll('.fade-in-section, .timeline-item');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <=
+                (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        const elementOutofView = (el) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                 elementTop > (window.innerHeight || document.documentElement.clientHeight)
+            );
+        };
+        const displayScrollElement = (element) => {
+            element.classList.add("is-visible");
+        };
+        const hideScrollElement = (element) => {
+             element.classList.remove("is-visible");
+        }
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                } else if(elementOutofView(el)){
+                     hideScrollElement(el)
+                }
+            })
+        }
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        })
+    </script>
+</body></html>
+
+
+
